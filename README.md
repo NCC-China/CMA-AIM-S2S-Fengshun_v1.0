@@ -1,4 +1,4 @@
-# Fengshun
+# Fengshun_v1.0
 ---
 Fengshun system, an AI-driven global subseasonal-to-seasonal prediction system developed by the CMA. Fengshun features a flow-dependent intelligent perturbation generation module in the latent space of the model, incorporates air-sea interaction, and offers interpretability. Trained on CRA-40 reanalysis data, CODAS SST data, and FY-3E OLR data, it daily generates 100 ensemble members for 60-day forecasts of global basic elements and circulation.
 
@@ -12,17 +12,30 @@ The downloaded files shall be organized as the following hierarchy:
 
 ```
 ├── root
-│   ├── data
-│   │   ├── mask.nc
-│   │   ├── sample
-│   │   │   ├── geopotential.nc
-│   │   │   ├── temperature.nc
-│   │   │   ├── ......
-│   │   │   └── total_precipitation.nc
-│   │
+│   ├── data_cra40
+│   │   ├── CRA40_RELEASE
+│   │   │   ├── 20260101
+│   │   │   │   ├── CRA40_AVO_20260101_GLB_1P00_DAY_V1_0_0.grib2
+│   │   │   │   ├── CRA40_CIC_20260101_GLB_1P00_DAY_V1_0_0.grib2
+│   │   │   │   ├── ......
+│   │   │   │   ├── CRA40LAND_SURFACE_20260101_GLB_1P00_DAY_V1_0_0.grib
+│   │   │   ├── 20260102
+│   │   │   │   ├── CRA40_AVO_20260102_GLB_1P00_DAY_V1_0_0.grib2
+│   │   │   │   ├── CRA40_CIC_20260102_GLB_1P00_DAY_V1_0_0.grib2
+│   │   │   │   ├── ......
+│   │   │   │   ├── CRA40LAND_SURFACE_20260102_GLB_1P00_DAY_V1_0_0.grib
+│   │   ├── FY3E
+│   │   │   ├── 20260101
+│   │   │   │   ├── Z_SATE_C_BAWX_20260102060301_P_FY3E_MERSI_GBAL_L2_OLR_MLT_GLL_20260101_POAD_5000M_V0.HDF
+│   │   │   ├── 20260102
+│   │   │   │   ├── Z_SATE_C_BAWX_20260103060305_P_FY3E_MERSI_GBAL_L2_OLR_MLT_GLL_20260102_POAD_5000M_V0.HDF
+│   │   ├── SST
+│   │   │   ├── 20260101
+│   │   │   │   ├── Z_OCEN_C_BABJ_20260102013454_P_CODAS_GLB_0P25_DAY-SST-20260101.nc
+│   │   │   ├── 20260102
+│   │   │   │   ├── Z_OCEN_C_BABJ_20260103013455_P_CODAS_GLB_0P25_DAY-SST-20260102.nc
 │   ├── model
-│   │   └── Fengshun_v1.0.onnx
-│   │
+│   │   └── Fengshun_cra40.onnx
 │   ├── inference.py
 │   └── data_util.py
 ```
@@ -38,14 +51,14 @@ The downloaded files shall be organized as the following hierarchy:
 3. Usage
 ```
 python inference.py
-    --model model/fuxi_s2s.onnx
+    --model model/Fengshun_cra40.onnx
     --input data/input.nc
     --total_step 42
     --total_member 11
     --save_dir output
 ```
 
-5. Input preparation
+4. Input preparation
 The input.nc file contains preprocessed data from the origin ERA5 files.
 The file has a shape of (2, 76, 121, 240), where the first dimension represents two time steps. The second dimension represents all variable and level combinations, named in the following exact order:
 ```python
