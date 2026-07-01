@@ -73,3 +73,6 @@ The file has a shape of (2, 76, 121, 240), where the first dimension represents 
  'q50', 't2m', 'd2m', 'sst', 'ttr', '10u', '10v', '100u', '100v',
  'msl', 'tcwv', 'tp']
 ```
+
+5. Supplementary files
+ Other configuration files required for model inference are stored at the following link: https://pan.quark.cn/s/1166e57368b2, where they can be downloaded as needed.
