@@ -75,4 +75,4 @@ The file has a shape of (2, 76, 121, 240), where the first dimension represents 
 ```
 
 5. Supplementary files
- Other configuration files required for model inference are stored at the following link: https://pan.quark.cn/s/1166e57368b2, where they can be downloaded as needed.
+ Other configuration files required for model inference are stored at the following link: https://pan.quark.cn/s/9b86f44cd202, where they can be downloaded as needed.
